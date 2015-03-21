@@ -1,0 +1,31 @@
+<%= form_for @muscle_group, :html => { :class => "form-horizontal muscle_group" } do |f| %>
+
+    <% if @muscle_group.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@muscle_group.errors.count, "error") %> prohibited this muscle_group from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @muscle_group.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@muscle_group[:name]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            muscle_groups_path, :class => 'btn btn-default' %>
+
+<% end %>

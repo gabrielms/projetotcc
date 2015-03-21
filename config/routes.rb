@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :muscle_groups
+
   devise_for :users
   root 'pages#index'
   # The priority is based upon order of creation: first created -> highest priority.
