@@ -1,4 +1,5 @@
 class MuscleGroupsController < ApplicationController
+  before_action :ensure_is_admin
   before_action :set_muscle_group, only: [:show, :edit, :update, :destroy]
 
   # GET /muscle_groups
@@ -70,5 +71,9 @@ class MuscleGroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def muscle_group_params
       params.require(:muscle_group).permit(:name)
+    end
+
+    def ensure_is_admin
+      redirect_to root_url unless current_user.admin?
     end
 end

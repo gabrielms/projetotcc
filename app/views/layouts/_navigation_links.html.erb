@@ -1,4 +1,6 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
-	<li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+	<li><%= link_to 'Cadastro de grupo muscular', muscle_groups_path %></li>
+	<li><%= link_to 'Cadastro de treinamento', workouts_path %></li>
+	<li><%= link_to 'Sair', destroy_user_session_path, :method=>'delete' %></li>
 <% end %>

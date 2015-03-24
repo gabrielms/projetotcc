@@ -1,0 +1,39 @@
+<%= form_for @workout, :html => { :class => "form-horizontal workout" } do |f| %>
+
+    <% if @workout.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@workout.errors.count, "error") %> prohibited this workout from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @workout.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@workout[:name]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :muscle_group_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :muscle_group_id, MuscleGroup.all, :id, :name %>
+      
+    </div>
+    <%= error_span(@workout[:muscle_group_id]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            workouts_path, :class => 'btn btn-default' %>
+
+<% end %>
