@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :coaches
+
   resources :workouts
 
   resources :muscle_groups

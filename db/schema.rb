@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323014515) do
+ActiveRecord::Schema.define(version: 20150327002543) do
+
+  create_table "coaches", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "cref"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "coaches", ["user_id"], name: "index_coaches_on_user_id"
 
   create_table "muscle_groups", force: :cascade do |t|
     t.string   "name"
@@ -30,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150323014515) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "name",                                null: false
+    t.string   "name"
     t.integer  "kind",                   default: 2,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"

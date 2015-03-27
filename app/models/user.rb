@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :trackable, :validatable, :rememberable
   enum kind: [:admin, :coach, :pupil]
 
+  has_one :coach
+
 end
