@@ -74,6 +74,6 @@ class MuscleGroupsController < ApplicationController
     end
 
     def ensure_is_admin
-      redirect_to root_url unless current_user.admin?
+      redirect_to root_url unless current_user && current_user.admin?
     end
 end
