@@ -25,7 +25,7 @@
   <div class="control-group">
     <%= f.label :muscle_group_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.collection_select :muscle_group_id, MuscleGroup.all, :id, :name %>
+      <%= f.collection_select :muscle_group_id, MuscleGroup.all, :id, :name, :class => 'form-control'%>
       
     </div>
     <%= error_span(@workout[:muscle_group_id]) %>

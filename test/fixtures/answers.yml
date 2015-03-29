@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coach_id: 
+  workout_id: 
+  value: 1
+
+two:
+  coach_id: 
+  workout_id: 
+  value: 1
