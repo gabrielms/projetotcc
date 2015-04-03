@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   
-  resources :answers
-
-  resources :replies
-
-  resources :questions
-
-  resources :polls
+  resources :polls do
+    resources :questions
+    resources :replies, only: [ :new, :create ]
+  end
 
   resources :coaches
 
