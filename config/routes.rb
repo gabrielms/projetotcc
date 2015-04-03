@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :polls
+
   resources :coaches
 
   resources :workouts
