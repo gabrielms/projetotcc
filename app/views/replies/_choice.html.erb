@@ -2,13 +2,11 @@
   <%= c.object.question.title %>
 </label>
 <div class="radio">
-  <% c.object.question.possible_answers.each do |possible_answer| %>
-    <p>
-      <label>
-        <%= possible_answer.title %>
-        <%= c.radio_button :possible_answer_id, possible_answer.id %>
-        <%= c.hidden_field :question_id %>
-      </label>
-    </p>
+  <% c.object.question.possible_answers.each_with_index do |possible_answer, index| %>
+    <label class="radio-inline">
+      <%= c.radio_button :possible_answer_id, possible_answer.id %>
+      <%= index + 1 %>
+      <%= c.hidden_field :question_id %>
+    </label>
   <% end %>
 </div>
