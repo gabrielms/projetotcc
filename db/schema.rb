@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403220838) do
+ActiveRecord::Schema.define(version: 20150403221157) do
 
   create_table "coaches", force: :cascade do |t|
     t.integer  "user_id"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 20150403220838) do
   end
 
   add_index "questions", ["poll_id"], name: "index_questions_on_poll_id"
+
+  create_table "replies", force: :cascade do |t|
+    t.integer  "poll_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "replies", ["poll_id"], name: "index_replies_on_poll_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
