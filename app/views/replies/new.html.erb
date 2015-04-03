@@ -1,5 +1,9 @@
-<h1>New Reply</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', replies_path %>
+<h1>
+  <%= @poll.title %>
+</h1>
+<%= form_for [ @poll, @reply ] do |f| %>
+  <%= f.fields_for :answers do |c| %>
+    <%= render "choice", c: c %>
+  <% end %>
+  <%= f.submit "Finish poll", class: "btn btn-primary" %>
+<% end %>
