@@ -10,7 +10,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'sass-rails', '>= 3.2'
-gem 'pry-rails'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 
@@ -27,6 +26,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'rails_layout'
   gem 'sqlite3'
+  gem 'pry-rails'
 end
 
 group :production do
