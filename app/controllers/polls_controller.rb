@@ -76,7 +76,7 @@ class PollsController < ApplicationController
     def authenticate!
       authenticate_user!
 
-      unless current_user.admin?
+      unless current_user.coach?
         redirect_to root_path, alert: "You don't have enough privileges to run that operation."
       end
     end

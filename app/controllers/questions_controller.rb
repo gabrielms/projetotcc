@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :set_poll
+  before_action :get_workouts
 
   def index
     @questions = Question.all
@@ -57,10 +58,13 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:poll_id, :title, :kind, { possible_answers_attributes: [ :question_id, :title ] } )
+      params.require(:question).permit(:poll_id, :workout_id, :title, :kind, { possible_answers_attributes: [ :question_id, :title ] } )
     end
 
     def set_poll
       @poll = Poll.find params[:poll_id]
+    end
+    def get_workouts
+      @workouts = Workout.all
     end
 end

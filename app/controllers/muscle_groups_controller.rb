@@ -74,6 +74,8 @@ class MuscleGroupsController < ApplicationController
     end
 
     def ensure_is_admin
-      redirect_to root_url unless current_user && current_user.admin?
+      authenticate_user!
+
+      redirect_to root_path, alert: "Acesso não permitido."  unless current_user.admin?
     end
 end

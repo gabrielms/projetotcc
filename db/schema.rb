@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403221508) do
+ActiveRecord::Schema.define(version: 20150404181436) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "reply_id"
@@ -63,9 +63,11 @@ ActiveRecord::Schema.define(version: 20150403221508) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "workout_id"
   end
 
   add_index "questions", ["poll_id"], name: "index_questions_on_poll_id"
+  add_index "questions", ["workout_id"], name: "index_questions_on_workout_id"
 
   create_table "replies", force: :cascade do |t|
     t.integer  "poll_id"

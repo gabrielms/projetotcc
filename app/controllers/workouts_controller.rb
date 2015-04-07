@@ -1,5 +1,6 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_is_admin
 
   # GET /workouts
   # GET /workouts.json
@@ -71,4 +72,10 @@ class WorkoutsController < ApplicationController
     def workout_params
       params.require(:workout).permit(:name, :muscle_group_id)
     end
+
+    def ensure_is_admin
+      authenticate_user!
+      current_user.admin?
+    end
+
 end
