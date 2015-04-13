@@ -1,5 +1,6 @@
 class RepliesController < ApplicationController
   before_action :set_poll
+  before_action :set_coach
 
   def new
     @reply = @poll.replies.build
@@ -10,7 +11,7 @@ class RepliesController < ApplicationController
 
   def create
     @reply = @poll.replies.build reply_params
-
+    @reply.coach_id = @coach.id
     respond_to do |format|
       if @reply.save
         format.html { redirect_to polls_path, notice: "Thank you for taking the poll." }
@@ -26,7 +27,11 @@ class RepliesController < ApplicationController
     @poll = Poll.find params[:poll_id]
   end
 
+  def set_coach
+    @coach = Coach.find current_user.coach.id
+  end
+
   def reply_params
-    params.require(:reply).permit({ answers_attributes: [ :value, :question_id, :possible_answer_id ] })
+    params.require(:reply).permit( { answers_attributes: [ :value, :question_id, :possible_answer_id ] })
   end
 end

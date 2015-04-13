@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404181436) do
+ActiveRecord::Schema.define(version: 20150413231348) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "reply_id"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 20150404181436) do
     t.string   "value"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "coach_id"
   end
 
+  add_index "answers", ["coach_id"], name: "index_answers_on_coach_id"
   add_index "answers", ["possible_answer_id"], name: "index_answers_on_possible_answer_id"
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["reply_id"], name: "index_answers_on_reply_id"
@@ -73,8 +75,10 @@ ActiveRecord::Schema.define(version: 20150404181436) do
     t.integer  "poll_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "coach_id"
   end
 
+  add_index "replies", ["coach_id"], name: "index_replies_on_coach_id"
   add_index "replies", ["poll_id"], name: "index_replies_on_poll_id"
 
   create_table "users", force: :cascade do |t|

@@ -2,6 +2,7 @@
   <%= @poll.title %>
 </h1>
 <%= form_for [ @poll, @reply ] do |f| %>
+  <%= f.hidden_field :coach_id %>
   <%= f.fields_for :answers do |c| %>
     <%= render "choice", c: c %>
   <% end %>
