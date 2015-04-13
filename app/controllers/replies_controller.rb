@@ -28,7 +28,7 @@ class RepliesController < ApplicationController
   end
 
   def set_coach
-    @coach = Coach.find current_user.coach.id
+    @coach = Coach.find(current_user.kind == "coach" ? current_user.coach.id : 1)
   end
 
   def reply_params
