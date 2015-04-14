@@ -1,7 +1,7 @@
 class RepliesController < ApplicationController
+  before_action :ensure_is_coach
   before_action :set_poll
   before_action :set_coach
-  before_action :ensure_is_coach
 
   def new
     @reply = @poll.replies.build
@@ -33,7 +33,7 @@ class RepliesController < ApplicationController
   end
 
   def set_coach
-    @coach = Coach.find current_user.coach.id if current_user.kind == "coach"
+    @coach = Coach.find current_user.coach.id 
   end
 
   def reply_params

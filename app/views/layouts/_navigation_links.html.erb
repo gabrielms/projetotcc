@@ -3,12 +3,12 @@
 	<% if current_user.admin? %>
 		<li><%= link_to 'Cadastro de grupo muscular', muscle_groups_path %></li>
 		<li><%= link_to 'Cadastro de treinamento', workouts_path %></li>
-		<li><%= link_to 'Cadastro de questionário', polls_path %></li>
+		<li><%= link_to 'Responder questionário', polls_path %></li>
 		<li><%= link_to 'Cadastro de treinador', coaches_path %></li>
 	<% end %>
 
 	<% if current_user.coach? %>
-		<li><%= link_to 'Cadastro de questionário', polls_path %></li>
+		<li><%= link_to 'Responder questionário', polls_path %></li>
 	<% end %>
 
 	<li><%= link_to 'Sair', destroy_user_session_path, :method=>'delete' %></li>
