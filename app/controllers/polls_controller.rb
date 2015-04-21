@@ -1,6 +1,7 @@
 class PollsController < ApplicationController
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
   before_action :authenticate!, except: [ :index ]
+  before_action :set_sexes, :set_objectives, :set_exercise_frequencies
 
   # GET /polls
   # GET /polls.json
@@ -16,6 +17,7 @@ class PollsController < ApplicationController
   # GET /polls/new
   def new
     @poll = Poll.new
+    @poll.build_physical_profile
   end
 
   # GET /polls/1/edit
@@ -26,7 +28,7 @@ class PollsController < ApplicationController
   # POST /polls.json
   def create
     @poll = Poll.new(poll_params)
-
+    @poll.build_physical_profile(poll_params[:physical_profile_attributes])
     respond_to do |format|
       if @poll.save
         format.html { redirect_to @poll, notice: 'Poll was successfully created.' }
@@ -63,6 +65,19 @@ class PollsController < ApplicationController
   end
 
   private
+
+    def set_sexes
+      @sexes = PhysicalProfile.sexes
+    end
+
+    def set_objectives
+      @objectives = PhysicalProfile.objectives
+    end
+
+    def set_exercise_frequencies
+      @exercise_frequencies = PhysicalProfile.how_often_pratice_exercises
+    end      
+
     # Use callbacks to share common setup or constraints between actions.
     def set_poll
       @poll = Poll.find(params[:id])
@@ -70,14 +85,14 @@ class PollsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poll_params
-      params.require(:poll).permit(:title)
+      params.require(:poll).permit(:title, physical_profile_attributes: [:age, :stature, :weight, :sex, :objective, :smoker, :has_cardiac_problem, :has_respiratory_problem, :cardiac_diseases_in_family, :how_often_pratice_exercises, :how_long_is_on_gym])
     end
 
     def authenticate!
       authenticate_user!
 
       unless current_user.coach? || current_user.admin?
-        redirect_to root_path, alert: "You don't have enough privileges to run that operation."
+        redirect_to root_path, alert: t("You don't have enough privileges to run that operation.")
       end
     end
 end

@@ -13,11 +13,70 @@
       </ul>
     </div>
   <% end %>
+   
   <p>
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control input-lg" %>
   </p>
+
+  <%= f.fields_for :physical_profile do |pp|%>
+
+    <div class="control-group">
+      <%= pp.label :age, :class => "control-label" %>
+      <div class="controls">
+        <%= pp.number_field :age, :class => "form-control", :step => 1 %>
+      </div>
+      <%= error_span(@poll[:age]) %>
+    </div>
+
+    <div class="control-group">
+      <%= pp.label :stature, :class => "control-label" %>
+      <div class="controls">
+        <%= pp.number_field :stature, :class => "form-control", :step => 0.01 %>
+      </div>
+      <%= error_span(@poll[:stature]) %>
+    </div>
+
+    <div class="control-group">
+      <%= pp.label :weigth, :class => "control-label" %>
+      <div class="controls">
+        <%= pp.number_field :weight, :class => "form-control", :step => 0.01 %>
+      </div>
+      <%= error_span(@poll[:weight]) %>
+    </div>
+
+    <div class="control-group">
+      <%= pp.label :sex, :class => "control-label" %>
+      <div class="controls">
+        <%= pp.select :sex, options_for_select(@sexes.keys, 0 ), {}, :class => "form-control" %>
+      </div>
+      <%= error_span(@poll[:sex]) %>
+    </div>
+
+    <div class="control-group">
+      <%= pp.label :objective, :class => "control-label" %>
+      <div class="controls">
+        <%= pp.select :objective, options_for_select(@objectives.keys, 0 ), {}, :class => "form-control" %>
+      </div>
+      <%= error_span(@poll[:sex]) %>
+    </div>
+
+    <div class="control-group">
+      <%= pp.label "Problemas de saúde", :class => "control-label" %>
+      <div class="controls">
+        <label class="checkbox-inline"> <%= pp.check_box :smoker %> É fumante?</label>
+        <label class="checkbox-inline"> <%= pp.check_box :has_cardiac_problem %> Tem problema cardiaco?</label>
+        <label class="checkbox-inline"> <%= pp.check_box :has_respiratory_problem %> Tem problema respiratório?</label>
+        <label class="checkbox-inline"> <%= pp.check_box :cardiac_diseases_in_family %> Tem histórico de doenças cardíacas na família?</label>
+      </div>
+    </div>
+
+
+
+  <% end %>
+ 
   <p>
     <%= f.submit 'Save', class: "btn btn-primary" %>
   </p>
+
 <% end %>
