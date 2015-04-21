@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413231348) do
+ActiveRecord::Schema.define(version: 20150421180413) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "reply_id"
@@ -43,6 +43,22 @@ ActiveRecord::Schema.define(version: 20150413231348) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "physical_profiles", force: :cascade do |t|
+    t.integer  "age"
+    t.float    "stature"
+    t.float    "weight"
+    t.integer  "sex"
+    t.integer  "objective"
+    t.boolean  "smoker"
+    t.boolean  "has_cardiac_problem"
+    t.boolean  "has_respiratory_problem"
+    t.boolean  "cardiac_diseases_in_family"
+    t.integer  "how_often_pratice_exercises"
+    t.integer  "how_long_is_on_gym"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "polls", force: :cascade do |t|

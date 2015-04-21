@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  age: 1
+  stature: 1.5
+  weight: 1.5
+  sex: 1
+  objective: 1
+  smoker: false
+  has_cardiac_problem: false
+  has_respiratory_problem: false
+  cardiac_diseases_in_family: false
+  how_often_pratice_exercises: 1
+  how_long_is_on_gym: 1
+
+two:
+  age: 1
+  stature: 1.5
+  weight: 1.5
+  sex: 1
+  objective: 1
+  smoker: false
+  has_cardiac_problem: false
+  has_respiratory_problem: false
+  cardiac_diseases_in_family: false
+  how_often_pratice_exercises: 1
+  how_long_is_on_gym: 1
