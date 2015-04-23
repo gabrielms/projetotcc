@@ -50,7 +50,6 @@
       <div class="controls">
         <%= pp.select :sex, options_for_select(@sexes.keys, 0 ), {}, :class => "form-control" %>
       </div>
-      <%= error_span(@poll[:sex]) %>
     </div>
 
     <div class="control-group">
@@ -58,25 +57,49 @@
       <div class="controls">
         <%= pp.select :objective, options_for_select(@objectives.keys, 0 ), {}, :class => "form-control" %>
       </div>
-      <%= error_span(@poll[:sex]) %>
     </div>
 
     <div class="control-group">
       <%= pp.label "Problemas de saúde", :class => "control-label" %>
       <div class="controls">
         <label class="checkbox-inline"> <%= pp.check_box :smoker %> É fumante?</label>
+      </div>
+      <div class="controls">
         <label class="checkbox-inline"> <%= pp.check_box :has_cardiac_problem %> Tem problema cardiaco?</label>
+      </div>  
+      <div class="controls">  
         <label class="checkbox-inline"> <%= pp.check_box :has_respiratory_problem %> Tem problema respiratório?</label>
+      </div>  
+      <div class="controls">  
         <label class="checkbox-inline"> <%= pp.check_box :cardiac_diseases_in_family %> Tem histórico de doenças cardíacas na família?</label>
       </div>
     </div>
 
+  <div class="control-group">
+    <%= pp.label :sex, :class => "control-label" %>
+    <div class="controls">
+      <%= pp.select :sex, options_for_select(@sexes.keys, 0 ), {}, :class => "form-control" %>
+    </div>
+  </div>
 
+  <div class="control-group">
+    <%= pp.label :how_often_pratice_exercises, :class => "control-label" %>
+    <div class="controls">
+      <%= pp.select :how_often_pratice_exercises, options_for_select(@exercise_frequencies.keys, 0 ), {}, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= pp.label :how_long_is_on_gym, :class => "control-label" %>
+    <div class="controls">
+      <%= pp.number_field :how_long_is_on_gym, :class => "form-control", :step => 1 %>
+    </div>
+    <%= error_span(@poll[:how_long_is_on_gym]) %>
+  </div>
 
   <% end %>
  
-  <p>
-    <%= f.submit 'Save', class: "btn btn-primary" %>
-  </p>
-
+  <br/>
+  <%= f.submit 'Save', class: "btn btn-primary" %>
+  
 <% end %>

@@ -263,3 +263,75 @@ pt-BR:
       not_saved:
         one: "Não foi possível salvar %{resource}: 1 erro"
         other: "Não foi possível salvar %{resource}: %{count} erros."
+
+  helpers: 
+    links:
+      destroy: "Excluir"
+      edit: "Editar"
+      new: "Novo"
+      confirm: "Tem certeza?"
+      back: "Voltar"
+  activerecord:
+    models:
+      coach: "Treinador"
+      answer: "Resposta"
+      muscle_group: "Grupo muscular"
+      physical_profile: "Perfil físico"
+      poll: "Perfil"
+      possible_answer: "Alternativa"
+      question: "Pergunta"
+      reply: "Réplica"
+      user: "Usuário"
+      workout: "Treinamento"
+    attributes:
+      coach:
+        name: "Nome"
+        phone: "Telefone"
+        user_id: "Usuário"
+        created_at: "Criado em"
+      answer:
+        reply_id: "Réplica"
+        question_id: "Pergunta"
+        possible_answer: "Possível resposta"
+        value: "Valor"
+        created_at: "Criado em"
+        coach_id: "Treinador"
+      muscle_group:
+        name: "Nome"
+        created_at: "Criado em"
+      physical_profile:
+        age: "Idade"
+        stature: "Estatura"
+        weight: "Peso"
+        sex: "Sexo"
+        objective: "Objetivo"
+        smoker: "Fumante?"
+        has_cardiac_problem: "Tem problema cardíaco?"
+        has_respiratory_problem: "Tem problema respiratório?"
+        cardiac_diseases_in_family: "Histórico de problemas cardíacos na família?"
+        how_long_is_on_gym: "Há quanto tempo faz academia?(Em dias)"
+        created_at: "Criado em"
+      poll:
+        title: "Título"
+        created_at: "Criado em"
+        physical_profile_id: "Perfil físico"
+      possible_answer:
+        question_id: "Pergunta"
+        title: "Título"
+        created_at: "Criado em"
+      question:
+        poll_id: "Perfil"
+        title: "Título"
+        created_at: "Criado em"
+        workout_id: "Treinamento"
+      reply:
+        poll_id: "Perfil"
+        created_at: "Criado em"
+        coach_id: "Treinador"
+      user:
+        kind: "Tipo"
+        created_at: "Criado em"
+      workout:
+        name: "Nome"
+        muscle_group_id: "Grupo muscular"
+        created_at: "Criado em"
