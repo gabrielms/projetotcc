@@ -264,6 +264,7 @@ pt-BR:
         one: "Não foi possível salvar %{resource}: 1 erro"
         other: "Não foi possível salvar %{resource}: %{count} erros."
       is_not_a_coach: "Ação somente permitida para treinadores"
+      poll_allready_responded: "Este questionário já foi respondido"
 
   helpers: 
     links:

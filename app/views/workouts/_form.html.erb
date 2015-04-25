@@ -25,8 +25,7 @@
   <div class="control-group">
     <%= f.label :muscle_group_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.collection_select :muscle_group_id, MuscleGroup.all, :id, :name, :class => 'form-control'%>
-      
+      <%= f.select :muscle_group_id, options_for_select(MuscleGroup.all.map { |mg| [mg.name, mg.id] }), {},  { :class => 'form-control' } %>
     </div>
     <%= error_span(@workout[:muscle_group_id]) %>
   </div>

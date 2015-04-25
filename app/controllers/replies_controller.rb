@@ -1,7 +1,7 @@
 class RepliesController < ApplicationController
-  before_action :ensure_is_coach
   before_action :set_poll
   before_action :set_coach
+  before_action :ensure_is_coach, :ensure_not_responded_yet
 
   def new
     @reply = @poll.replies.build
@@ -25,7 +25,13 @@ class RepliesController < ApplicationController
   private
 
   def ensure_is_coach
-    redirect_to polls_path, alert: t("errors.messages.is_not_a_coach") unless current_user.kind == "coach"
+    # redirect_to polls_path, alert: t("errors.messages.is_not_a_coach") unless current_user.kind == "coach"
+  end
+
+  def ensure_not_responded_yet
+    if(Reply.where(poll_id: @poll.id, coach_id: @coach.id).any?)
+      redirect_to polls_path, alert: t("errors.messages.poll_allready_responded")
+    end
   end
 
   def set_poll
@@ -33,7 +39,7 @@ class RepliesController < ApplicationController
   end
 
   def set_coach
-    @coach = Coach.find current_user.coach.id 
+    @coach = Coach.find current_user.coach.id
   end
 
   def reply_params

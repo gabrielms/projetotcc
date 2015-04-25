@@ -1,10 +1,76 @@
 <h1>
-  <%= @poll.title %>
+	Perfil : <%= @poll.title %>
 </h1>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tr>
+      <td>
+      	<b>Idade:</b> 
+      	<%= @poll.physical_profile.age %>
+      </td>
+      
+      <td>
+      	<b>Altura: </b> 
+      	<%= @poll.physical_profile.stature %>
+      </td>
+
+	  	<td>
+      	<b>Peso: </b> 
+      	<%= @poll.physical_profile.weight %>
+      </td>
+    	
+      <td>
+      	<b>Sexo: </b> 
+      	<%= @poll.physical_profile.sex %>
+      </td>
+
+      <td>
+      	<b>Objetivo: </b> 
+      	<%= @poll.physical_profile.objective %>
+      </td>
+    </tr>
+
+    <tr>
+   		<td>
+      	<b>É fumante? </b> 
+      	<%= @poll.physical_profile.smoker ? "Sim" : "Não" %>
+      </td>
+
+      <td>
+      	<b>Tem problema cardíaco? </b> 
+      	<%= @poll.physical_profile.has_cardiac_problem ? "Sim" : "Não" %>
+      </td>
+
+      <td>
+      	<b>Tem problema respiratório? </b> 
+      	<%= @poll.physical_profile.has_respiratory_problem ? "Sim" : "Não" %>
+      </td>
+
+      <td>
+      	<b>Histórico de problemas cardíacos na família? </b> 
+      	<%= @poll.physical_profile.cardiac_diseases_in_family ? "Sim" : "Não" %>
+      </td>      
+    </tr>
+
+    <tr>
+    	<td>
+    		<b>Frequência que pratica exercícios físicos?(Fora da academia) </b> 
+      	<%= @poll.physical_profile.how_often_pratice_exercises %>
+    	</td>
+    
+    <td>
+    		<b>Há quanto tempo está na academia?</b> 
+      	<%= @poll.physical_profile.how_long_is_on_gym %>
+    	</td>
+    </tr>
+    
+  </table>
+</div>
+
 <%= form_for [ @poll, @reply ] do |f| %>
   <%= f.hidden_field :coach_id %>
   <%= f.fields_for :answers do |c| %>
     <%= render "choice", c: c %>
   <% end %>
-  <%= f.submit "Finish poll", class: "btn btn-primary" %>
+  <%= f.submit "Finalizar questionário", class: "btn btn-primary" %>
 <% end %>
