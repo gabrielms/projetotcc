@@ -76,13 +76,6 @@
     </div>
 
   <div class="control-group">
-    <%= pp.label :sex, :class => "control-label" %>
-    <div class="controls">
-      <%= pp.select :sex, options_for_select(@sexes.keys, 0 ), {}, :class => "form-control" %>
-    </div>
-  </div>
-
-  <div class="control-group">
     <%= pp.label :how_often_pratice_exercises, :class => "control-label" %>
     <div class="controls">
       <%= pp.select :how_often_pratice_exercises, options_for_select(@exercise_frequencies.keys, 0 ), {}, :class => "form-control" %>
