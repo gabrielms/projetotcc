@@ -29,7 +29,7 @@ class WorkoutsController < ApplicationController
 
     respond_to do |format|
       if @workout.save
-        format.html { redirect_to @workout, notice: 'Workout was successfully created.' }
+        format.html { redirect_to @workout, notice: 'Treinamento criado.' }
         format.json { render :show, status: :created, location: @workout }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class WorkoutsController < ApplicationController
   def update
     respond_to do |format|
       if @workout.update(workout_params)
-        format.html { redirect_to @workout, notice: 'Workout was successfully updated.' }
+        format.html { redirect_to @workout, notice: 'Treinamento atualizado.' }
         format.json { render :show, status: :ok, location: @workout }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class WorkoutsController < ApplicationController
   def destroy
     @workout.destroy
     respond_to do |format|
-      format.html { redirect_to workouts_url, notice: 'Workout was successfully destroyed.' }
+      format.html { redirect_to workouts_url, notice: 'Treinamento excluído.' }
       format.json { head :no_content }
     end
   end
