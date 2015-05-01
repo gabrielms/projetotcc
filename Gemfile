@@ -12,6 +12,7 @@ gem 'bootstrap-sass'
 gem 'sass-rails', '>= 3.2'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
+gem 'seed_dump'
 
 group :test do
 	gem 'minitest-rails'
