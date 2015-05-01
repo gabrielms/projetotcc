@@ -11,19 +11,26 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = @poll.questions.build
-    10.times {|value| @question.possible_answers.build({title: (value+1).to_s})}
+      @question = @poll.questions.build
+      10.times {|value| @question.possible_answers.build({title: (value+1).to_s})}
   end
 
   def edit
   end
 
   def create
-    @question = Question.new(question_params)
+    saved = true
+    @workouts.each do |w|
+      @question = Question.new(question_params)
+      @question.workout = w
+      if(!@question.save)
+        saved = false
+      end
+    end
 
     respond_to do |format|
-      if @question.save
-        format.html { redirect_to @poll, notice: 'Question was successfully created.' }
+      if saved
+        format.html { redirect_to @poll, notice: 'Perfil criado.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
@@ -35,7 +42,7 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
+        format.html { redirect_to @question, notice: 'Perfil atualizado.' }
         format.json { render :show, status: :ok, location: @question }
       else
         format.html { render :edit }
@@ -47,7 +54,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to @poll, notice: 'Question dropped.' }
+      format.html { redirect_to @poll, notice: 'Perfil excluido.' }
       format.json { head :no_content }
     end
   end

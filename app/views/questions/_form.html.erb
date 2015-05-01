@@ -13,10 +13,7 @@
       </ul>
     </div>
   <% end %>
-  <p>
-    <%= f.label :workout %>
-    <%= f.select :workout_id, Workout.all.collect { |w| [ w.name, w.id ] }, class: "form-control input-lg" %>
-  </p>
+
   <p>
     <label>Specify some choices:</label>
   </p>

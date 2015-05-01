@@ -25,7 +25,7 @@ class RepliesController < ApplicationController
   private
 
   def ensure_is_coach
-    # redirect_to polls_path, alert: t("errors.messages.is_not_a_coach") unless current_user.kind == "coach"
+    redirect_to polls_path, alert: t("errors.messages.is_not_a_coach") unless current_user.kind == "coach"
   end
 
   def ensure_not_responded_yet
