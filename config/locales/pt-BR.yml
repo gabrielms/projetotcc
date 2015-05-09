@@ -266,13 +266,23 @@ pt-BR:
       is_not_a_coach: "Ação somente permitida para treinadores"
       poll_allready_responded: "Este questionário já foi respondido"
 
-  helpers: 
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "ja era"
+  helpers:
+    actions: "Ações"
     links:
       destroy: "Excluir"
       edit: "Editar"
       new: "Novo"
       confirm: "Tem certeza?"
       back: "Voltar"
+      save: "Salvar"
+      cancel: "Cancelar"
   activerecord:
     models:
       coach: "Treinador"
@@ -304,7 +314,7 @@ pt-BR:
       physical_profile:
         age: "Idade"
         stature: "Estatura"
-        weight: "Peso"
+        weigth: "Peso"
         sex: "Sexo"
         objective: "Objetivo"
         smoker: "Fumante?"
@@ -313,6 +323,7 @@ pt-BR:
         cardiac_diseases_in_family: "Histórico de problemas cardíacos na família?"
         how_long_is_on_gym: "Há quanto tempo faz academia?(Em dias)"
         created_at: "Criado em"
+        how_often_pratice_exercises: "Há quanto tempo pratica exercícios"
       poll:
         title: "Título"
         created_at: "Criado em"

@@ -15,7 +15,7 @@ class RepliesController < ApplicationController
     @reply.coach_id = @coach.id
     respond_to do |format|
       if @reply.save
-        format.html { redirect_to polls_path, notice: "Thank you for taking the poll." }
+        format.html { redirect_to polls_path, notice: "Obrigado por responder este questionário." }
       else
         format.html { render :new }
       end
@@ -39,7 +39,7 @@ class RepliesController < ApplicationController
   end
 
   def set_coach
-    @coach = Coach.find current_user.coach.id
+    @coach = Coach.find current_user.coach.id if current_user.coach?
   end
 
   def reply_params

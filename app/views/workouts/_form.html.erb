@@ -1,6 +1,6 @@
 <%= form_for @workout, :html => { :class => "form-horizontal workout" } do |f| %>
 
-    <% if @workout.errors.any? %>
+  <% if @workout.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
         <h3 class="panel-title"><%= pluralize(@workout.errors.count, "error") %> prohibited this workout from being saved:</h3>
@@ -30,8 +30,8 @@
     <%= error_span(@workout[:muscle_group_id]) %>
   </div>
 
-
-  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <br />
+  <%= f.submit t('helpers.links.save'), :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
             workouts_path, :class => 'btn btn-default' %>
 

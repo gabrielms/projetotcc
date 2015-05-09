@@ -93,6 +93,8 @@
   <% end %>
  
   <br/>
-  <%= f.submit 'Save', class: "btn btn-primary" %>
+  <%= f.submit t('helpers.links.save'), class: "btn btn-primary" %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            polls_path, :class => 'btn btn-default' %>
   
 <% end %>

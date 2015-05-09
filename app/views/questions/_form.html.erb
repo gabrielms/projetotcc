@@ -15,7 +15,7 @@
   <% end %>
 
   <p>
-    <label>Specify some choices:</label>
+    <label>Selecione as opções:</label>
   </p>
   <%= f.fields_for :possible_answers do |c| %>
     <p>
@@ -24,6 +24,8 @@
   <% end %>
   <p>
     <%= f.hidden_field :poll_id %>
-    <%= f.submit 'Save', class: "btn btn-primary" %>
+    <%= f.submit t('helpers.links.save'), class: "btn btn-primary" %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            polls_path, :class => 'btn btn-default' %>
   </p>
 <% end %>

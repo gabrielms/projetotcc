@@ -1,14 +1,16 @@
-<h1>Todos os Perfis</h1>
+<h1>Todos os perfis</h1>
 <% unless @polls.any? %>
-  <p class="bg-info flash">No polls.</p>
+  <p class="bg-info flash">Sem perfis.</p>
 <% end %>
 <ul class="clearfix polls">
   <% @polls.each do |poll| %>
     <li class="col-md-6 polls-poll">
       <div class="polls-poll-detail">
         <h2>
-          <%= link_to poll.title, new_poll_reply_path(poll) %>
-          <%= link_to "Manage", poll, class: "label label-default" if current_user && current_user.admin? %>
+          <% if current_user %>
+            <%= link_to poll.title, current_user.admin? ? edit_poll_path(poll) : new_poll_reply_path(poll) %>
+            <%= link_to "Adicionar perguntas", new_poll_question_path(poll), class: "label label-default" if current_user.admin? %>
+          <% end %>
         </h2>
       </div>
     </li>

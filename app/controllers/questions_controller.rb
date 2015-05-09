@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
 
   def new
       @question = @poll.questions.build
-      10.times {|value| @question.possible_answers.build({title: (value+1).to_s})}
+      5.times {|value| @question.possible_answers.build({title: (value+1).to_s})}
   end
 
   def edit

@@ -29,7 +29,7 @@
     <% end %>
   </div>
   <p>
-    <label>Specify some choices:</label>
+    <label>Escolha as opções:</label>
   </p>
   <%= f.fields_for :possible_answers do |c| %>
     <p>
@@ -38,6 +38,6 @@
   <% end %>
   <p>
     <%= f.hidden_field :poll_id %>
-    <%= f.submit 'Save', class: "btn btn-primary" %>
+    <%= f.submit t('helpers.links.save'), class: "btn btn-primary" %>
   </p>
 <% end %>
