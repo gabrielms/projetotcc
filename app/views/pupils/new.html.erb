@@ -1,0 +1,9 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%- model_class = Pupil -%>
+			<div class="page-header">
+			  <h1><%=t '.title', :default => 'Novo aluno', :model => model_class.model_name.human.titleize %></h1>
+			</div>
+<%= render :partial => 'form' %>
+	</div>
+</div>

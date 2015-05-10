@@ -1,0 +1,6 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"> <%= current_user.email %> <span class="caret"></span></a>
+  <ul class="dropdown-menu" role="menu" aria-expanded="true">
+    <li><%= link_to 'Sair', destroy_user_session_path, :method => 'delete' %></li>
+  </ul>
+</li>
