@@ -1,35 +1,29 @@
 class PupilsController < ApplicationController
   before_action :set_pupil, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_is_coach
+  # before_action :ensure_is_coach
+  before_action :set_sexes, :set_objectives, :set_exercise_frequencies
 
-  # GET /pupils
-  # GET /pupils.json
   def index
     @pupils = Pupil.all
   end
-
-  # GET /pupils/1
-  # GET /pupils/1.json
+    
   def show
   end
-
-  # GET /pupils/new
+  
   def new
     @pupil = Pupil.new
+    @pupil.build_physical_profile
   end
-
-  # GET /pupils/1/edit
+  
   def edit
   end
-
-  # POST /pupils
-  # POST /pupils.json
+    
   def create
     @pupil = Pupil.new(pupil_params)
 
     respond_to do |format|
       if @pupil.save
-        format.html { redirect_to @pupil, notice: 'Pupil was successfully created.' }
+        format.html { redirect_to action: "show", controller: "inference_results", pupil_id: @pupil.id, notice: 'Aluno criado com sucesso.' }
         format.json { render :show, status: :created, location: @pupil }
       else
         format.html { render :new }
@@ -37,13 +31,11 @@ class PupilsController < ApplicationController
       end
     end
   end
-
-  # PATCH/PUT /pupils/1
-  # PATCH/PUT /pupils/1.json
+    
   def update
     respond_to do |format|
       if @pupil.update(pupil_params)
-        format.html { redirect_to @pupil, notice: 'Pupil was successfully updated.' }
+        format.html { redirect_to @pupil, notice: 'Aluno atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @pupil }
       else
         format.html { render :edit }
@@ -51,30 +43,39 @@ class PupilsController < ApplicationController
       end
     end
   end
-
-  # DELETE /pupils/1
-  # DELETE /pupils/1.json
+    
   def destroy
     @pupil.destroy
     respond_to do |format|
-      format.html { redirect_to pupils_url, notice: 'Pupil was successfully destroyed.' }
+      format.html { redirect_to pupils_url, notice: 'Aluno destruído com sucesso.' }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
+  private    
     def set_pupil
       @pupil = Pupil.find(params[:id])
     end
+
+    def set_sexes
+      @sexes = PhysicalProfile.sexes
+    end
+
+    def set_objectives
+      @objectives = PhysicalProfile.objectives
+    end
+
+    def set_exercise_frequencies
+      @exercise_frequencies = PhysicalProfile.how_often_pratice_exercises
+    end   
+
     def ensure_is_coach
       authenticate_user!
       redirect_to(root_path, notice: 'Você precisa ser um treinador para cadastrar um aluno.') unless current_user.coach?
       @coach = current_user.coach
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def pupil_params
-      params.require(:pupil).permit(:name)
+      params.require(:pupil).permit(:name, physical_profile_attributes: [:age, :stature, :weight, :sex, :objective, :smoker, :has_cardiac_problem, :has_respiratory_problem, :cardiac_diseases_in_family, :how_often_pratice_exercises, :how_long_is_on_gym])
     end
 end

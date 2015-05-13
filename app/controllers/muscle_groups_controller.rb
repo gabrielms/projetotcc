@@ -29,7 +29,7 @@ class MuscleGroupsController < ApplicationController
 
     respond_to do |format|
       if @muscle_group.save
-        format.html { redirect_to @muscle_group, notice: 'Muscle group was successfully created.' }
+        format.html { redirect_to @muscle_group, notice: 'Grupo muscular criado com sucesso.' }
         format.json { render :show, status: :created, location: @muscle_group }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class MuscleGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @muscle_group.update(muscle_group_params)
-        format.html { redirect_to @muscle_group, notice: 'Muscle group was successfully updated.' }
+        format.html { redirect_to @muscle_group, notice: 'Grupo muscular atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @muscle_group }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class MuscleGroupsController < ApplicationController
   def destroy
     @muscle_group.destroy
     respond_to do |format|
-      format.html { redirect_to muscle_groups_url, notice: 'Muscle group was successfully destroyed.' }
+      format.html { redirect_to muscle_groups_url, notice: 'Grupo muscular destruído com sucesso.' }
       format.json { head :no_content }
     end
   end

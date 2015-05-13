@@ -70,31 +70,8 @@
 <%= form_for [ @poll, @reply ] do |f| %>
   <%= f.hidden_field :coach_id %>
   <%= f.fields_for :answers do |c| %>
-  <ul class="clearfix polls">
     <%= render "choice", c: c %>
   <% end %>
   <%= f.submit "Finalizar questionário", class: "btn btn-primary" %>
 <% end %>
 
-
-<ul class="clearfix polls">
-  <% @polls.each do |poll| %>
-    <li class="col-md-6 polls-poll">
-      <div class="polls-poll-detail">
-        <h2>
-          <%= link_to poll.title, new_poll_reply_path(poll) %>
-          <%= link_to "Manage", poll, class: "label label-default" if current_user && current_user.admin? %>
-        </h2>
-      </div>
-    </li>
-  <% end %>
-  <% if current_user && current_user.admin? %>
-    <li class="col-md-6 polls-poll">
-      <div class="polls-poll-detail">
-        <h2>
-          <%= link_to '+', new_poll_path %>
-        </h2>
-      </div>
-    </li>
-  <% end %>
-</ul>

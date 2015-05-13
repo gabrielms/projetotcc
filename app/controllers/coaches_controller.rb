@@ -32,7 +32,7 @@ class CoachesController < ApplicationController
     
     respond_to do |format|
       if @coach.save
-        format.html { redirect_to @coach, notice: 'Coach was successfully created.' }
+        format.html { redirect_to @coach, notice: 'Treinador criado com sucesso.' }
         format.json { render :show, status: :created, location: @coach }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class CoachesController < ApplicationController
   def update
     respond_to do |format|
       if @coach.update(coach_params)
-        format.html { redirect_to @coach, notice: 'Coach was successfully updated.' }
+        format.html { redirect_to @coach, notice: 'Treinador atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @coach }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class CoachesController < ApplicationController
   def destroy
     @coach.destroy
     respond_to do |format|
-      format.html { redirect_to coaches_url, notice: 'Coach was successfully destroyed.' }
+      format.html { redirect_to coaches_url, notice: 'Treinador destruído com sucesso.' }
       format.json { head :no_content }
     end
   end

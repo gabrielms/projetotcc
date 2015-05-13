@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509195912) do
+ActiveRecord::Schema.define(version: 20150510171737) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "reply_id"
@@ -20,10 +20,8 @@ ActiveRecord::Schema.define(version: 20150509195912) do
     t.string   "value"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "coach_id"
   end
 
-  add_index "answers", ["coach_id"], name: "index_answers_on_coach_id"
   add_index "answers", ["possible_answer_id"], name: "index_answers_on_possible_answer_id"
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["reply_id"], name: "index_answers_on_reply_id"
@@ -38,6 +36,17 @@ ActiveRecord::Schema.define(version: 20150509195912) do
   end
 
   add_index "coaches", ["user_id"], name: "index_coaches_on_user_id"
+
+  create_table "inference_results", force: :cascade do |t|
+    t.integer  "pupil_id"
+    t.integer  "workout_id"
+    t.integer  "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "inference_results", ["pupil_id"], name: "index_inference_results_on_pupil_id"
+  add_index "inference_results", ["workout_id"], name: "index_inference_results_on_workout_id"
 
   create_table "muscle_groups", force: :cascade do |t|
     t.string   "name"
@@ -81,9 +90,12 @@ ActiveRecord::Schema.define(version: 20150509195912) do
 
   create_table "pupils", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "physical_profile_id"
   end
+
+  add_index "pupils", ["physical_profile_id"], name: "index_pupils_on_physical_profile_id"
 
   create_table "questions", force: :cascade do |t|
     t.integer  "poll_id"

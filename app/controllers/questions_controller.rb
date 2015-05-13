@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if saved
-        format.html { redirect_to @poll, notice: 'Perfil criado.' }
+        format.html { redirect_to polls_path, notice: 'Perguntas adicionadas.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }

@@ -28,7 +28,7 @@ class PollsController < ApplicationController
   # POST /polls.json
   def create
     @poll = Poll.new(poll_params)
-    @poll.build_physical_profile(poll_params[:physical_profile_attributes])
+    # @poll.build_physical_profile(poll_params[:physical_profile_attributes])
     respond_to do |format|
       if @poll.save
         format.html { redirect_to polls_url, notice: 'Perfil criado com sucesso!' }
