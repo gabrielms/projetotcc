@@ -5,7 +5,7 @@
   <% c.object.question.possible_answers.each_with_index do |possible_answer, index| %>
     <label class="radio-inline">
       <%= c.radio_button :possible_answer_id, possible_answer.id %>
-      <%= index + 1 %>
+      <%= get_value_for_answer_title(possible_answer.title) %>
       <%= c.hidden_field :question_id %>
     </label>
   <% end %>
