@@ -323,7 +323,7 @@ pt-BR:
         cardiac_diseases_in_family: "Histórico de problemas cardíacos na família?"
         how_long_is_on_gym: "Há quanto tempo faz academia?(Em dias)"
         created_at: "Criado em"
-        how_often_pratice_exercises: "Há quanto tempo pratica exercícios"
+        how_often_pratice_exercises: "Com que frequência pratica exercícios"
       poll:
         title: "Título"
         created_at: "Criado em"
