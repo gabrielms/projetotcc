@@ -10,4 +10,14 @@ module RepliesHelper
 			"Não encontrado"
 		end
 	end
+	def print_muscle_group_name(workout)
+		
+		muscle_group_name = ""
+		MuscleGroup.all.each do |muscle_group|
+			if(Workout.where(muscle_group_id: muscle_group.id).first.id == workout.id)
+				muscle_group_name = muscle_group.name
+			end
+		end
+		return muscle_group_name
+	end
 end
