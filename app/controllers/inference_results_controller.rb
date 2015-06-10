@@ -5,6 +5,6 @@ class InferenceResultsController < ApplicationController
   end
   
   def show
-  	@inference_results = InferenceResult.where(pupil_id: params[:pupil_id]).all
+  	@inference_results = InferenceResult.where(pupil_id: params[:pupil_id]).all.order("points DESC")
   end
 end

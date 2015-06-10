@@ -12,18 +12,19 @@ class Pupil < ActiveRecord::Base
 				workout_id = workout.id
 				points = 0
 
-				first_profile = workout.question.poll.physical_profile
-				second_profile = self.physical_profile
-				inference_machine = InferenceMachine.new(first_profile,second_profile)
-				closeness_to_profile = inference_machine.calculate_closeness
-
-				workout.question.answers.each do |answer|
-					points += answer.possible_answer.nil? ? 0 : answer.possible_answer.title.to_i
+				workout.questions.each do |question|
+					first_profile = question.poll.physical_profile
+					inference_machine = InferenceMachine.new(first_profile, self.physical_profile)
+					closeness_to_profile = inference_machine.calculate_closeness
+					question.answers.each do |answer|
+						points += answer.possible_answer.nil? ? 0 : (answer.possible_answer.title.to_i * (closeness_to_profile / 100))
+					end
 				end
+				
 				inference_result = InferenceResult.new
 				inference_result.workout_id = workout_id
 				inference_result.pupil_id = pupil_id
-				inference_result.points = (points * (closeness_to_profile / 100))
+				inference_result.points = points
 				inference_result.save
 			end
 	end

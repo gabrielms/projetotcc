@@ -14,8 +14,10 @@ module RepliesHelper
 		
 		muscle_group_name = ""
 		MuscleGroup.all.each do |muscle_group|
-			if(Workout.where(muscle_group_id: muscle_group.id).first.id == workout.id)
-				muscle_group_name = muscle_group.name
+			unless workout.nil?
+				if(Workout.where(muscle_group_id: muscle_group.id).first.id == workout.id)
+					muscle_group_name = muscle_group.name
+				end
 			end
 		end
 		return muscle_group_name
